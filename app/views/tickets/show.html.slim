@@ -1,2 +1,34 @@
-h1 Tickets#show
-p Find me in app/views/tickets/show.html.slim
+.row
+  .col-md-8.col-lg-8.col-md-offset-2.col-lg-offset-2
+    .well.well-sm.alert-danger
+      p
+        | On the address that you specified, was sent a letter with a unique number of your issue and the constant reference to the issue page
+    .panel.panel-success
+      .panel-heading
+        h4
+          b
+            = @ticket.subject
+          span.pull-right.badge
+            = @ticket.status.status
+      .panel-body
+        .media-list
+          .media-body
+            .well.well-sm
+              p
+                b
+                  | Reference:
+                  = ' '
+                span.label-danger
+                  = @ticket.reference
+            .well.well-sm
+              p
+                b Department:
+                span
+                  = ' ' + @ticket.department
+            .well.well-sm
+              p
+                b Query:
+              p
+                = @ticket.body
+
+    = link_to 'Report new issue', new_ticket_path, class: 'btn btn-success'

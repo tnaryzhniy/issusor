@@ -1,2 +1,24 @@
-h1 Tickets#new
-p Find me in app/views/tickets/new.html.slim
+h1 New Ticket
+
+.col-md-6.col-md-offset-3
+  - if @ticket.errors.any?
+    #error_explanation.well
+      h2.panel-danger
+        = pluralize(@ticket.errors.count, 'error')
+          | prohibited
+          | this ticket from being saved:
+      ul.list-unstyled
+        - @ticket.errors.full_messages.each do |msg|
+          li.label-danger
+            = msg
+
+  = simple_form_for @ticket do |f|
+    = f.input :name, label: 'Input Your name, please.'
+    = f.input :email, label: 'Input Your e-mail, please.'
+    = f.input :subject, label: 'Subject'
+    = f.input :body, as: :text, input_html: { rows: '5' }, label: 'Request'
+    = f.input :department, collection: @department, selected: 'client', label: 'Department'
+    /h3 Status
+    /= f.simple_fields_for :status do |st|
+    /  = st.input :status, label: 'status'
+    = f.button :submit, :class => 'btn-success'

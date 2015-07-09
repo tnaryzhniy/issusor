@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'tickets#new'
-
-  get 'tickets/new'
-
-  get 'tickets/show'
+  resources :tickets, except: [:index, :destroy]
 
   devise_for :users
+
+  root 'tickets#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

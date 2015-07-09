@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+  body
+    h2
+      | Hello,
+      = ' ' + @ticket.name
+    p
+      b
+        | Your request has been received:
+      br
+      blockquote
+        = @ticket.body
+    p
+      | Unique reference of your enquiry:
+      b
+        = ' ' + @ticket.reference
+    p
+      | You can see and update your request by this link:
+      = ' '
+      = link_to 'view request on site', @ticket
+    p
+      | Thanks for your request and have a great day!

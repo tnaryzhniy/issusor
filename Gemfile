@@ -30,6 +30,8 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'friendly_id'
+gem 'mailcatcher', '~> 0.6.1'
 
 
 group :development, :test do
